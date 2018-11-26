@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,68 +41,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvLatitude"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Latitude"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvLongitude"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Longitude"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvAltitude"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Altitude"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Speed"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tvBearing"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Bearing"
+            android:text="Aktuelle Richtung"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -117,7 +61,7 @@
             android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
             android:background="@android:drawable/bottom_bar"
             android:gravity="center_vertical|center_horizontal"
-            android:text="BearingTo"
+            android:text="Richtung zum Ziel"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
@@ -134,7 +78,7 @@
             android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
             android:background="@android:drawable/bottom_bar"
             android:gravity="center_vertical|center_horizontal"
-            android:text="DistanceTo"
+            android:text="Entfernung zum Ziel"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
@@ -147,16 +91,33 @@
         <TextView
             android:id="@+id/tv_listener_events"
             android:layout_width="wrap_content"
-            android:layout_height="162dp"
+            android:layout_height="195dp"
             android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Nothing received yet"
+            android:text="Gleich geht's los"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_next"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_light"
+            android:text="Nächste Aufgage" />
+
+        <Button
+            android:id="@+id/b_previous"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vorherige Aufgabe" />
+
+
 
     </LinearLayout>
 
