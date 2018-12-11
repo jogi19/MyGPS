@@ -137,6 +137,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
                 // go on element back
                 if(mission_counter < 0)
                     mission_counter = (mission.length-1);
+                if(mission_counter >= mission.length)
+                    mission_counter = (mission.length-1);
                 textview.setText(mission[mission_counter]);
                 mission_counter = mission_counter-1;
                 break;
