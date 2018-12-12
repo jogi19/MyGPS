@@ -34,7 +34,12 @@ public class LocationListenerImpl implements LocationListener {
     LocationListenerImpl(MainActivity ma){
         this.ma = ma;
         locationManager = (LocationManager) ma.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,this);
+        try {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, this);
+        }
+        catch(SecurityException se){
+            se.printStackTrace();
+        }
 
         ma.setContentView(R.layout.activity_main);
         textview = (TextView) ma.findViewById(R.id.tv_listener_events);
