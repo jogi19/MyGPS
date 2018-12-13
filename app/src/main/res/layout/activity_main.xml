@@ -109,15 +109,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
-            android:text="Nächste Aufgage" />
+            android:text="Nächste Aufgabe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <Button
             android:id="@+id/b_previous"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vorherige Aufgabe" />
+            android:background="@color/colorAccent"
+            android:text="Vorherige Aufgabe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
+        <TextView
+            android:id="@+id/tvMission"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical|fill_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Aktuelle Aufgabe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </LinearLayout>

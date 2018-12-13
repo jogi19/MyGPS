@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.view.View;
 import android.util.Log;
 
+import org.w3c.dom.Text;
 
 
 public class LocationListenerImpl implements LocationListener, View.OnClickListener {
@@ -22,6 +23,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     private TextView tvBearing;
     private TextView tvBearingTo;
     private TextView tvDistanceTo;
+    private TextView tvMission;
     private Location destination;
     private EditText et_longitude;
     private EditText et_latitude;
@@ -54,7 +56,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         tvBearing = (TextView) ma.findViewById(R.id.tvBearing);
         tvBearingTo = (TextView) ma.findViewById(R.id.tvBearingTo);
         tvDistanceTo = (TextView) ma.findViewById(R.id.tvDistaceTo);
-
+        tvMission = (TextView) ma.findViewById(R.id.tvMission);
         et_longitude = (EditText) ma.findViewById(R.id.et_longitute);
         et_latitude = (EditText) ma.findViewById(R.id.et_latitude);
         String s_long = et_longitude.getText().toString();
@@ -71,6 +73,31 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
         last_update = 1L;
 
+        initGame();
+
+        /*
+        mission_message = new String[3];
+        mission_location = new Location[3];
+        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
+        mission_location[0] = new Location("location1");
+        mission_location[0].setLongitude(Double.parseDouble( "8.485164"));
+        mission_location[0].setLatitude(Double.parseDouble("50.581443"));
+
+
+        mission_message[1] = "2. Ein Bild, bei dem alle auf einem Bein stehen";
+        mission_location[1] = new Location("location2");
+        mission_location[1].setLongitude(Double.parseDouble("8.584234"));
+        mission_location[1].setLatitude(Double.parseDouble("50.62078"));
+
+        mission_message[2] = "3. Ein Photo, bei dem Ihr alle die Zunge rausstreckt";
+        mission_location[2] = new Location("location2");
+        mission_location[2].setLongitude(Double.parseDouble("8.505890"));
+        mission_location[2].setLatitude(Double.parseDouble("50.568087"));
+        */
+    }
+
+    private void initGame()
+    {
         mission_message = new String[5];
         mission_location = new Location[5];
         mission_message[0] = "1. Abfahrt Obi";
@@ -98,31 +125,6 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         mission_location[4] = new Location("location2");
         mission_location[4].setLongitude(Double.parseDouble("8.190974"));
         mission_location[4].setLatitude(Double.parseDouble("50.763999"));
-
-        /*
-        mission_message = new String[3];
-        mission_location = new Location[3];
-        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
-        mission_location[0] = new Location("location1");
-        mission_location[0].setLongitude(Double.parseDouble( "8.485164"));
-        mission_location[0].setLatitude(Double.parseDouble("50.581443"));
-
-
-        mission_message[1] = "2. Ein Bild, bei dem alle auf einem Bein stehen";
-        mission_location[1] = new Location("location2");
-        mission_location[1].setLongitude(Double.parseDouble("8.584234"));
-        mission_location[1].setLatitude(Double.parseDouble("50.62078"));
-
-        mission_message[2] = "3. Ein Photo, bei dem Ihr alle die Zunge rausstreckt";
-        mission_location[2] = new Location("location2");
-        mission_location[2].setLongitude(Double.parseDouble("8.505890"));
-        mission_location[2].setLatitude(Double.parseDouble("50.568087"));
-        */
-    }
-
-    private void initGame()
-    {
-
 
     }
     @Override
@@ -243,6 +245,6 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
         tvDistanceTo.setText(s_distance_to_dest+ " Meter");
-        tv_message.setText("Aufgabe "+(used_mission_counter+1));
+        tvMission.setText("Aufgabe "+(used_mission_counter+1));
     }
 }
