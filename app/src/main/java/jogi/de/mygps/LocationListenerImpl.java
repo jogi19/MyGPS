@@ -166,16 +166,16 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         }
         else{
             if((deviation>-10)&&(deviation<10)) {
-                tv_message.setText("Geradeaus !");
+                tv_message.setText("Geradeaus ! \n"+deviation);
             }
             else if((deviation>-90)&&(deviation<-10)) {
-                tv_message.setText("nach  Rechts! -->");
+                tv_message.setText("nach  Rechts! --> \n"+deviation);
             }
             else if((deviation<90)&&(deviation<10)) {
-                tv_message.setText("<-- nach Links!");
+                tv_message.setText("<-- nach Links! \n"+deviation);
             }
             else if((deviation>90)||(deviation<=-90)) {
-                tv_message.setText("falsche Richtung !");
+                tv_message.setText("falsche Richtung ! \n"+deviation);
             }
             else{
                 tv_message.setText("Deviation \n"+deviation);
