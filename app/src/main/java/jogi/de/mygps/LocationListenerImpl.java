@@ -10,9 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.util.Log;
 
 
 
@@ -34,7 +32,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     private String[] mission_message;
     private Location[] mission_location;
     private Location actual_location;
-
+    private Float f_distance_to_dest = Float.parseFloat("1000.0");
+    private int used_mission_counter = 0;
 
     LocationListenerImpl(MainActivity ma){
         this.ma = ma;
@@ -61,12 +60,46 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         String s_long = et_longitude.getText().toString();
         String s_lat = et_latitude.getText().toString();
 
+        //set here already a actuel_location to avoid null pointer exceptions
+        actual_location = new Location("location_home");
+        actual_location.setLongitude(Double.parseDouble(s_long));
+        actual_location.setLatitude(Double.parseDouble(s_lat));
+
         destination = new Location("location");
         destination.setLongitude(Double.parseDouble(s_long));
         destination.setLatitude(Double.parseDouble(s_lat));
 
         last_update = 1L;
 
+        mission_message = new String[5];
+        mission_location = new Location[5];
+        mission_message[0] = "1. Abfahrt Obi";
+        mission_location[0] = new Location("location1");
+        mission_location[0].setLongitude(Double.parseDouble( "8.481237"));
+        mission_location[0].setLatitude(Double.parseDouble("50.568484"));
+
+
+        mission_message[1] = "Hier Rechts ab zur Autobahn A45";
+        mission_location[1] = new Location("location2");
+        mission_location[1].setLongitude(Double.parseDouble("8.482959"));
+        mission_location[1].setLatitude(Double.parseDouble("50.589889"));
+
+        mission_message[2] = "Die Abfahrt von Ehringhausen";
+        mission_location[2] = new Location("location2");
+        mission_location[2].setLongitude(Double.parseDouble(" 8.385991"));
+        mission_location[2].setLatitude(Double.parseDouble("50.61868"));
+
+        mission_message[3] = "Wir sind beim Kreisverkehr";
+        mission_location[3] = new Location("location2");
+        mission_location[3].setLongitude(Double.parseDouble("8.203260"));
+        mission_location[3].setLatitude(Double.parseDouble("50.746983"));
+
+        mission_message[4] = "Und jetzt geht es rechts nach Steinbach";
+        mission_location[4] = new Location("location2");
+        mission_location[4].setLongitude(Double.parseDouble("8.190974"));
+        mission_location[4].setLatitude(Double.parseDouble("50.763999"));
+
+        /*
         mission_message = new String[3];
         mission_location = new Location[3];
         mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
@@ -82,9 +115,9 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
         mission_message[2] = "3. Ein Photo, bei dem Ihr alle die Zunge rausstreckt";
         mission_location[2] = new Location("location2");
-        mission_location[2].setLongitude(Double.parseDouble("8.609065"));
-        mission_location[2].setLatitude(Double.parseDouble("50.700378"));
-
+        mission_location[2].setLongitude(Double.parseDouble("8.505890"));
+        mission_location[2].setLatitude(Double.parseDouble("50.568087"));
+        */
     }
 
     private void initGame()
@@ -110,12 +143,13 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         {
             bearing_to_destination = 360+bearing_to_destination;
         }
+        String s_bearing_to_destination = String.format("%.00f",bearing_to_destination);
         tvBearing.setText("Aktuelle Richtung: "+ actual_location.getBearing()+ "'");
-        tvBearingTo.setText("Ihr muesst: "+bearing_to_destination+ "'");
+        tvBearingTo.setText(s_bearing_to_destination+ "'");
         
-        Float f_distance_to_dest = actual_location.distanceTo(destination);
+        f_distance_to_dest = actual_location.distanceTo(destination);
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
-        tvDistanceTo.setText("Entfernung: "+ s_distance_to_dest+ " m");
+        tvDistanceTo.setText(s_distance_to_dest+ " Meter");
         
         Float deviation = bearing_to_destination - actual_location.getBearing();
         if (deviation>=180.0)
@@ -126,7 +160,30 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         {
             deviation = deviation +360;
         }
-        tv_message.setText("Deviation \n"+deviation);
+        Log.i("deviation","deviation"+deviation);
+        if(f_distance_to_dest<100) {
+            tv_message.setText(mission_message[used_mission_counter]);
+        }
+
+
+        else{
+            if((deviation>90)||(deviation<=-90)) {
+                tv_message.setText("falsche Richtung !");
+                }
+            else if((deviation>-90)&&(deviation<-10)) {
+                tv_message.setText("nach  Rechts! -->");
+            }
+            else if((deviation<90)&&(deviation<10)) {
+                tv_message.setText("<-- nach Links!");
+            }
+            else if((deviation>-10)&&(deviation<10)) {
+                tv_message.setText("Geradeaus !");
+            }
+            else{
+                tv_message.setText("Deviation \n"+deviation);
+            }
+
+        }
     }
 
     @Override
@@ -145,7 +202,9 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     }
 
     public void onClick(android.view.View v){
-        int used_mission_counter = mission_counter; // just to have a valid value
+
+        used_mission_counter = mission_counter; // just to have a valid value
+        Log.i("f_distance_to_dest","f_distance_to_dest "+Float.toString(f_distance_to_dest));
         switch (v.getId()){
             case R.id.b_previous:
                 // go one element back
@@ -153,35 +212,39 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
                     mission_counter = (mission_message.length-1);
                 if(mission_counter >= mission_message.length)
                     mission_counter = (mission_message.length-1);
-                tv_message.setText(mission_message[mission_counter]);
+                used_mission_counter = mission_counter;
+                f_distance_to_dest = actual_location.distanceTo(mission_location[mission_counter]);
+                if(f_distance_to_dest<100) {
+                    tv_message.setText(mission_message[mission_counter]);
+                }
                 et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
                 et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
-                used_mission_counter = mission_counter;
                 mission_counter = mission_counter-1;
                 break;
             case R.id.b_next:
                 if(mission_counter >=(mission_message.length)||mission_counter <0)
                     mission_counter = 0;
-
-                tv_message.setText(mission_message[mission_counter]);
-                et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
-                et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
+                f_distance_to_dest = actual_location.distanceTo(mission_location[mission_counter]);
                 used_mission_counter = mission_counter;
+                if(f_distance_to_dest<100) {
+                    tv_message.setText(mission_message[mission_counter]);
+                }
+                 et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
+                et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
                 mission_counter = mission_counter+1;
                 break;
         }
         Float bearing_to_destination  = actual_location.bearingTo(mission_location[used_mission_counter]);
-        Float f_distance_to_dest = actual_location.distanceTo(mission_location[used_mission_counter]);
-
         //TODO in methode auslagern !
         if (bearing_to_destination <=0)
         {
             bearing_to_destination = 360+bearing_to_destination;
         }
         tvBearing.setText("Aktuelle Richtung: "+ actual_location.getBearing()+ "'");
-        tvBearingTo.setText("Ihr muesst: "+bearing_to_destination+ "'");
+        tvBearingTo.setText(bearing_to_destination+ "'");
 
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
-        tvDistanceTo.setText("Entfernung: "+ s_distance_to_dest+ " m");
+        tvDistanceTo.setText(s_distance_to_dest+ " Meter");
+        tv_message.setText("Aufgabe "+(used_mission_counter+1));
     }
 }
