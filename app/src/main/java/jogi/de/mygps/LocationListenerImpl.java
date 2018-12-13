@@ -60,7 +60,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         String s_long = et_longitude.getText().toString();
         String s_lat = et_latitude.getText().toString();
 
-        //set here already a actuel_location to avoid null pointer exceptions
+        //set here already a valid_location to avoid null pointer exceptions
         actual_location = new Location("location_home");
         actual_location.setLongitude(Double.parseDouble(s_long));
         actual_location.setLatitude(Double.parseDouble(s_lat));
@@ -144,8 +144,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
             bearing_to_destination = 360+bearing_to_destination;
         }
         String s_bearing_to_destination = String.format("%.00f",bearing_to_destination);
-        tvBearing.setText("Aktuelle Richtung: "+ actual_location.getBearing()+ "'");
-        tvBearingTo.setText(s_bearing_to_destination+ "'");
+        tvBearing.setText("Ihr geht: "+ actual_location.getBearing()+ " Grad");
+        tvBearingTo.setText(s_bearing_to_destination+ " Grad");
         
         f_distance_to_dest = actual_location.distanceTo(destination);
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
@@ -164,20 +164,18 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         if(f_distance_to_dest<100) {
             tv_message.setText(mission_message[used_mission_counter]);
         }
-
-
         else{
-            if((deviation>90)||(deviation<=-90)) {
-                tv_message.setText("falsche Richtung !");
-                }
+            if((deviation>-10)&&(deviation<10)) {
+                tv_message.setText("Geradeaus !");
+            }
             else if((deviation>-90)&&(deviation<-10)) {
                 tv_message.setText("nach  Rechts! -->");
             }
             else if((deviation<90)&&(deviation<10)) {
                 tv_message.setText("<-- nach Links!");
             }
-            else if((deviation>-10)&&(deviation<10)) {
-                tv_message.setText("Geradeaus !");
+            else if((deviation>90)||(deviation<=-90)) {
+                tv_message.setText("falsche Richtung !");
             }
             else{
                 tv_message.setText("Deviation \n"+deviation);
@@ -240,8 +238,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         {
             bearing_to_destination = 360+bearing_to_destination;
         }
-        tvBearing.setText("Aktuelle Richtung: "+ actual_location.getBearing()+ "'");
-        tvBearingTo.setText(bearing_to_destination+ "'");
+        tvBearing.setText("Ihr geht: "+ actual_location.getBearing()+ " Grad");
+        tvBearingTo.setText(bearing_to_destination+ " Grad");
 
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
         tvDistanceTo.setText(s_distance_to_dest+ " Meter");
