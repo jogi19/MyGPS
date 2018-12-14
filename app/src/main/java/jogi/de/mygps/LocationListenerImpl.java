@@ -73,30 +73,10 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
         last_update = 1L;
 
-        initGame();
+        initWTZ();
+  }
 
-        /*
-        mission_message = new String[3];
-        mission_location = new Location[3];
-        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
-        mission_location[0] = new Location("location1");
-        mission_location[0].setLongitude(Double.parseDouble( "8.485164"));
-        mission_location[0].setLatitude(Double.parseDouble("50.581443"));
-
-
-        mission_message[1] = "2. Ein Bild, bei dem alle auf einem Bein stehen";
-        mission_location[1] = new Location("location2");
-        mission_location[1].setLongitude(Double.parseDouble("8.584234"));
-        mission_location[1].setLatitude(Double.parseDouble("50.62078"));
-
-        mission_message[2] = "3. Ein Photo, bei dem Ihr alle die Zunge rausstreckt";
-        mission_location[2] = new Location("location2");
-        mission_location[2].setLongitude(Double.parseDouble("8.505890"));
-        mission_location[2].setLatitude(Double.parseDouble("50.568087"));
-        */
-    }
-
-    private void initGame()
+    private void initDrive()
     {
         mission_message = new String[5];
         mission_location = new Location[5];
@@ -126,6 +106,26 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         mission_location[4].setLongitude(Double.parseDouble("8.190974"));
         mission_location[4].setLatitude(Double.parseDouble("50.763999"));
 
+    }
+
+    public void initWTZ(){
+        mission_message = new String[3];
+        mission_location = new Location[3];
+        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
+        mission_location[0] = new Location("location1");
+        mission_location[0].setLongitude(Double.parseDouble( "8.485164"));
+        mission_location[0].setLatitude(Double.parseDouble("50.581443"));
+
+
+        mission_message[1] = "2. Ein Bild, bei dem alle auf einem Bein stehen";
+        mission_location[1] = new Location("location2");
+        mission_location[1].setLongitude(Double.parseDouble("8.584234"));
+        mission_location[1].setLatitude(Double.parseDouble("50.62078"));
+
+        mission_message[2] = "3. Ein Photo, bei dem Ihr alle die Zunge rausstreckt";
+        mission_location[2] = new Location("location2");
+        mission_location[2].setLongitude(Double.parseDouble("8.505890"));
+        mission_location[2].setLatitude(Double.parseDouble("50.568087"));
     }
     @Override
     public void onLocationChanged(Location location) {
@@ -171,10 +171,10 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
                 tv_message.setText("Geradeaus ! \n"+deviation);
             }
             else if((deviation>-90)&&(deviation<-10)) {
-                tv_message.setText("nach  Rechts! --> \n"+deviation);
-            }
-            else if((deviation<90)&&(deviation<10)) {
                 tv_message.setText("<-- nach Links! \n"+deviation);
+            }
+            else if((deviation<90)&&(deviation>10)) {
+                tv_message.setText("nach  Rechts! --> \n"+deviation);
             }
             else if((deviation>90)||(deviation<=-90)) {
                 tv_message.setText("falsche Richtung ! \n"+deviation);
