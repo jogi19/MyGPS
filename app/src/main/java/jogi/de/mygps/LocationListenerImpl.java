@@ -145,7 +145,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     public void initWTZ(){
         mission_message = new String[3];
         mission_location = new Location[3];
-        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Spring";
+        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Springt";
         mission_location[0] = new Location("location1");
         mission_location[0].setLongitude(Double.parseDouble( "8.485164"));
         mission_location[0].setLatitude(Double.parseDouble("50.581443"));
@@ -175,8 +175,12 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
             lastLocation = location;
         }
 
-        track_count = track_count + actual_location.distanceTo(lastLocation);
-        lastLocation = actual_location;
+        float distance_to_last_location = actual_location.distanceTo(lastLocation);
+        //TODO check if this works as pespected
+        if(distance_to_last_location>10) {
+            track_count = track_count + distance_to_last_location;
+            lastLocation = actual_location;
+        }
         destination.setLongitude(Double.parseDouble(s_long));
         destination.setLatitude(Double.parseDouble(s_lat));
 
