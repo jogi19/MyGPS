@@ -30,6 +30,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     private int mission_counter = 0;
     private String[] mission_message;
     private Location[] mission_location;
+    private String[] photographer;
     private Location actual_location;
     private Float f_distance_to_dest = Float.parseFloat("1000.0");
     private int used_mission_counter = 0;
@@ -75,8 +76,9 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         last_update = 1L;
 
         //initWTZ();
-        initTrain();
-        //initDrive();
+        //initTrain();
+        initDrive();
+        //initSpiel();
   }
 
     private void initTrain()
@@ -114,31 +116,131 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
     {
         mission_message = new String[5];
         mission_location = new Location[5];
-        mission_message[0] = "1. Abfahrt Obi";
-        mission_location[0] = new Location("location1");
-        mission_location[0].setLongitude(Double.parseDouble( "8.481237"));
-        mission_location[0].setLatitude(Double.parseDouble("50.568484"));
+        photographer    = new String[5];
 
+        mission_message[0] = "1. Abfahrt Zuhause";
+        mission_location[0] = new Location("location1");
+        mission_location[0].setLongitude(Double.parseDouble( "8.187384"));
+        mission_location[0].setLatitude(Double.parseDouble("50.735446"));
+        photographer[0] = "Nathanael";
 
         mission_message[1] = "Hier Rechts ab zur Autobahn A45";
         mission_location[1] = new Location("location2");
         mission_location[1].setLongitude(Double.parseDouble("8.482959"));
         mission_location[1].setLatitude(Double.parseDouble("50.589889"));
+        photographer[1] = "Mark";
 
         mission_message[2] = "Die Abfahrt von Ehringhausen";
         mission_location[2] = new Location("location2");
         mission_location[2].setLongitude(Double.parseDouble(" 8.385991"));
         mission_location[2].setLatitude(Double.parseDouble("50.61868"));
+        photographer[2] = "Vincent";
 
         mission_message[3] = "Wir sind beim Kreisverkehr";
         mission_location[3] = new Location("location2");
         mission_location[3].setLongitude(Double.parseDouble("8.203260"));
         mission_location[3].setLatitude(Double.parseDouble("50.746983"));
+        photographer[3] = "Maximilian";
+
 
         mission_message[4] = "Und jetzt geht es rechts nach Steinbach";
         mission_location[4] = new Location("location2");
         mission_location[4].setLongitude(Double.parseDouble("8.190974"));
         mission_location[4].setLatitude(Double.parseDouble("50.763999"));
+        photographer[4] = "Tom";
+
+    }
+
+    public void initSpiel(){
+        mission_message = new String[14];
+        mission_location = new Location[14];
+        photographer    = new String[14];
+
+        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Springt"; //TODO
+        mission_location[0] = new Location("location1");
+        mission_location[0].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[0].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[0] = "Nathanael";
+
+        mission_message[1] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[1] = new Location("location1");
+        mission_location[1].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[1].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[1] = "Mark";
+
+        mission_message[2] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[2] = new Location("location1");
+        mission_location[2].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[2].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[2] = "Vincent";
+
+        mission_message[3] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[3] = new Location("location1");
+        mission_location[3].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[3].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[3] = "Maximilian";
+
+        mission_message[4] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[4] = new Location("location1");
+        mission_location[4].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[4].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[4] = "Tom";
+
+        mission_message[5] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[5] = new Location("location1");
+        mission_location[5].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[5].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[5] = "Felix";
+
+
+        mission_message[6] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[6] = new Location("location1");
+        mission_location[6].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[6].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[6] = "Nelson";
+
+        mission_message[7] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[7] = new Location("location1");
+        mission_location[7].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[7].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[7] = "Carla";
+
+        mission_message[8] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[8] = new Location("location1");
+        mission_location[8].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[8].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[8] = "Emmy";
+
+        mission_message[9] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[9] = new Location("location1");
+        mission_location[9].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[9].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[9] = "Ben";
+
+        mission_message[10] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[10] = new Location("location1");
+        mission_location[10].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[10].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[10] = "Matteo";
+
+        mission_message[11] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[11] = new Location("location1");
+        mission_location[11].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[11].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[11] = "Talha";
+
+        mission_message[12] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[12] = new Location("location1");
+        mission_location[12].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[12].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[12] = "Leo";
+
+        mission_message[13] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_location[13] = new Location("location1");
+        mission_location[13].setLongitude(Double.parseDouble( "8.485164")); //TODO
+        mission_location[13].setLatitude(Double.parseDouble("50.581443")); //TODO
+        photographer[13] = "Fynn";
+
 
     }
 
@@ -210,6 +312,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         Log.i("deviation","deviation"+deviation);
         if(f_distance_to_dest<mission_range) {
             tv_message.setText(mission_message[used_mission_counter]);
+            tvMission.setText("Fotograph: "+ photographer[used_mission_counter]);
         }
         else{
             if((deviation>-10)&&(deviation<10)) {
@@ -227,9 +330,11 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
             else{
                 tv_message.setText("Deviation \n"+deviation);
             }
+            String s_track_count = String.format("%.00f",this.track_count);
+            tvMission.setText("Strecke " + s_track_count+ " Meter");
         }
-        String s_track_count = String.format("%.00f",this.track_count);
-        tvMission.setText("Strecke " + s_track_count+ " Meter");
+        //String s_track_count = String.format("%.00f",this.track_count);
+        //tvMission.setText("Strecke " + s_track_count+ " Meter");
     }
 
     @Override
