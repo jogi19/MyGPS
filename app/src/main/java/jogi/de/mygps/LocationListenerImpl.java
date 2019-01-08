@@ -78,8 +78,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         //initWTZ();
 
         //initTrain();
-        initDrive();
-        //initSpiel();
+        //initDrive();
+        initSpiel();
         et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
         et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
         tvMission.setText("Aufgabe "+(mission_counter+1));
@@ -160,90 +160,90 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         mission_location = new Location[14];
         photographer    = new String[14];
 
-        mission_message[0] = "1. Macht ein Bild bei dem Ihr alle Springt"; //TODO
+        mission_message[0] = "1. Fotografiert einen von Euch zusammen mit einem Tier"; //TODO
         mission_location[0] = new Location("location1");
-        mission_location[0].setLongitude(Double.parseDouble( "8.187597")); //TODO
-        mission_location[0].setLatitude(Double.parseDouble("50.73492")); //TODO
-        photographer[0] = "Nathanael";
+        mission_location[0].setLongitude(Double.parseDouble( "8.187066")); //Akeleiweg
+        mission_location[0].setLatitude(Double.parseDouble("50.734981")); //TODO
+        photographer[0] = "Mark";
 
-        mission_message[1] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[1] = "2. Macht ein Bild bei dem alle in die Luft springen";
         mission_location[1] = new Location("location2");
-        mission_location[1].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[1].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[1] = "Mark";
+        mission_location[1].setLongitude(Double.parseDouble( "8.187727")); //Akeleiweg/Goldlackweg
+        mission_location[1].setLatitude(Double.parseDouble("50.732962")); //TODO
+        photographer[1] = "Nathanael";
 
-        mission_message[2] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[2] = "3. Macht ein Foto von euren Schuhen.";
         mission_location[2] = new Location("location3");
-        mission_location[2].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[2].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[2] = "Vincent";
+        mission_location[2].setLongitude(Double.parseDouble( "8.190227")); //Nelkenweg/Holunderstraße
+        mission_location[2].setLatitude(Double.parseDouble("50.732709")); //TODO
+        photographer[2] = "Maximilian";
 
-        mission_message[3] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[3] = "4. Macht ein Bild von einem von euch mit einem Ei in der Hand";
         mission_location[3] = new Location("location4");
-        mission_location[3].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[3].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[3] = "Maximilian";
+        mission_location[3].setLongitude(Double.parseDouble( "8.191109")); //Fahler/Fahler(bei Moschs)
+        mission_location[3].setLatitude(Double.parseDouble("50.733610")); //TODO
+        photographer[3] = "Vincent";
 
-        mission_message[4] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[4] = "5. Fotografiert jemanden von Euch zusammen mit einer Person, die nicht auf dem Geburstag eingeladen ist";
         mission_location[4] = new Location("location5");
-        mission_location[4].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[4].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[4].setLongitude(Double.parseDouble( "8.193892")); //Holunderstraße/Erikaweg
+        mission_location[4].setLatitude(Double.parseDouble("50.734634")); //TODO
         photographer[4] = "Tom";
 
-        mission_message[5] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[5] = "6. Macht ein Foto auf dem alle Geburtstagskinder zu sehen sind";
         mission_location[5] = new Location("location6");
-        mission_location[5].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[5].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[5].setLongitude(Double.parseDouble( "8.193656")); //Fahler, Abzweig Weg
+        mission_location[5].setLatitude(Double.parseDouble("50.735214")); //TODO
         photographer[5] = "Felix";
 
 
-        mission_message[6] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[6] = "7. Ein Foto, bei dem mind. zwei Kinder einen Handstand (mit Hilfe) machen";
         mission_location[6] = new Location("location7");
-        mission_location[6].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[6].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[6] = "Nelson";
+        mission_location[6].setLongitude(Double.parseDouble( "8.191220")); //Kornblumenweg/Veilchenweg
+        mission_location[6].setLatitude(Double.parseDouble("50.734517")); //TODO
+        photographer[6] = "Leo";
 
-        mission_message[7] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[7] = "8. Ein Bild, bei dem alle Kinder auf einem Spielgerät sind";
         mission_location[7] = new Location("location8");
-        mission_location[7].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[7].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[7].setLongitude(Double.parseDouble( "8.190252")); //Spielplatz
+        mission_location[7].setLatitude(Double.parseDouble("50.735745")); //TODO
         photographer[7] = "Carla";
 
-        mission_message[8] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[8] = "9. Fotografiert die Zahl 10";
         mission_location[8] = new Location("location9");
-        mission_location[8].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[8].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[8].setLongitude(Double.parseDouble( "8.193581")); //Brombeerweg/Feldweg
+        mission_location[8].setLatitude(Double.parseDouble("50.737310")); //TODO
         photographer[8] = "Emmy";
 
-        mission_message[9] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[9] = "10. Fotografiert einen Torjubel";
         mission_location[9] = new Location("location10");
-        mission_location[9].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[9].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[9].setLongitude(Double.parseDouble( "8.192017")); //Sportplatzstraße
+        mission_location[9].setLatitude(Double.parseDouble("50.739959")); //TODO
         photographer[9] = "Ben";
 
-        mission_message[10] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[10] = "11. Spielt eine Szene der Bundesjugendspiele nach.";
         mission_location[10] = new Location("location11");
-        mission_location[10].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[10].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[10].setLongitude(Double.parseDouble( "8.191452")); //Sportplatz
+        mission_location[10].setLatitude(Double.parseDouble("50.740775")); //TODO
         photographer[10] = "Matteo";
 
-        mission_message[11] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[11] = "12. Lasst das Geburtstagskind hochleben";
         mission_location[11] = new Location("location12");
-        mission_location[11].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[11].setLatitude(Double.parseDouble("50.581443")); //TODO
+        mission_location[11].setLongitude(Double.parseDouble( "8.198210")); //Sportplatzstraße bei Grundschule
+        mission_location[11].setLatitude(Double.parseDouble("50.741644")); //TODO
         photographer[11] = "Talha";
 
-        mission_message[12] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[12] = "13. Macht ein Foto mit allen Kindern auf der Stehwippe.";
         mission_location[12] = new Location("location13");
-        mission_location[12].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[12].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[12] = "Leo";
+        mission_location[12].setLongitude(Double.parseDouble( "8.195544")); //Spielplatz Grundschule
+        mission_location[12].setLatitude(Double.parseDouble("50.740789")); //TODO
+        photographer[12] = "Fynn";
 
-        mission_message[13] = "1. Macht ein Bild bei dem Ihr alle Springt";
+        mission_message[13] = "14. Ein Foto, auf dem man sieht, wie sehr ihr euch auf die Schule freut";
         mission_location[13] = new Location("location14");
-        mission_location[13].setLongitude(Double.parseDouble( "8.485164")); //TODO
-        mission_location[13].setLatitude(Double.parseDouble("50.581443")); //TODO
-        photographer[13] = "Fynn";
+        mission_location[13].setLongitude(Double.parseDouble( "8.196491")); //TODO
+        mission_location[13].setLatitude(Double.parseDouble("50.740746")); //TODO
+        photographer[13] = "Nelson";
 
 
     }
