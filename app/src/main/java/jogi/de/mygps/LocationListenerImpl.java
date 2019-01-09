@@ -352,12 +352,12 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
     @Override
     public void onProviderEnabled(String provider) {
-        tv_message.setText("\nonProviderEnabled: " + provider);
+        tv_message.setText("\nGPS eingeschaltet " + provider);
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        tv_message.setText("\nonProviderDisabled: " + provider);
+        tv_message.setText("\nGSP ausgeschaltet " + provider);
     }
 
     public void onClick(android.view.View v){
@@ -390,19 +390,20 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
                 if(f_distance_to_dest<mission_range) {
                     tv_message.setText(mission_message[mission_counter]);
                 }
-                 et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
+                et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
                 et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
                 //mission_counter = mission_counter+1;
                 break;
         }
         Float bearing_to_destination  = actual_location.bearingTo(mission_location[used_mission_counter]);
-        //TODO in methode auslagern !
         if (bearing_to_destination <=0)
         {
             bearing_to_destination = 360+bearing_to_destination;
         }
+
         tvBearing.setText("Ihr geht: "+ actual_location.getBearing()+ " Grad");
-        tvBearingTo.setText(bearing_to_destination+ " Grad");
+        String s_bearing_to_destination = String.format("%.00f",bearing_to_destination);
+        tvBearingTo.setText(s_bearing_to_destination+ " Grad");
 
         String s_distance_to_dest = String.format("%.00f",f_distance_to_dest);
         tvDistanceTo.setText(s_distance_to_dest+ " Meter");
