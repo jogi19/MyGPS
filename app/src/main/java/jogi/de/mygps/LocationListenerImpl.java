@@ -83,38 +83,43 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         et_longitude.setText(Double.toString(mission_location[mission_counter].getLongitude()));
         et_latitude.setText(Double.toString(mission_location[mission_counter].getLatitude()));
         tvMission.setText("Aufgabe "+(mission_counter+1));
-
     }
 
     private void initTrain()
     {
         mission_message = new String[5];
         mission_location = new Location[5];
-        mission_message[0] = "1. Arbeit";
+        photographer    = new String[5];
+        mission_message[0] = "5. Fotografiert jemanden von Euch zusammen mit einer fremden Person";
         mission_location[0] = new Location("location1");
         mission_location[0].setLongitude(Double.parseDouble("8.505890"));
         mission_location[0].setLatitude(Double.parseDouble("50.568087"));
+        photographer[0] = "Nathanael";
 
 
         mission_message[1] = "2. Bahnhof WTZ";
         mission_location[1] = new Location("location2");
         mission_location[1].setLongitude(Double.parseDouble("8.503924"));
         mission_location[1].setLatitude(Double.parseDouble("50.565803"));
+        photographer[1] = "Nathanael";
 
         mission_message[2] = "3. Bahnhof Haiger";
         mission_location[2] = new Location("location3");
         mission_location[2].setLongitude(Double.parseDouble(" 8.221374"));
         mission_location[2].setLatitude(Double.parseDouble("50.741495"));
+        photographer[2] = "Nathanael";
 
         mission_message[3] = "4. Parkplatz";
         mission_location[3] = new Location("location4");
         mission_location[3].setLongitude(Double.parseDouble("8.220256"));
         mission_location[3].setLatitude(Double.parseDouble("50.740873"));
+        photographer[3] = "Nathanael";
 
         mission_message[4] = "5. Zuhause";
         mission_location[4] = new Location("location5");
         mission_location[4].setLongitude(Double.parseDouble("8.187390"));
         mission_location[4].setLatitude(Double.parseDouble("50.735454"));
+        photographer[4] = "Nathanael";
     }
 
     private void initDrive()
@@ -184,7 +189,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         mission_location[3].setLatitude(Double.parseDouble("50.733610")); //TODO
         photographer[3] = "Vincent";
 
-        mission_message[4] = "5. Fotografiert jemanden von Euch zusammen mit einer Person, die nicht auf dem Geburstag eingeladen ist";
+        mission_message[4] = "5. Fotografiert jemanden von Euch zusammen mit einer fremden Person";
         mission_location[4] = new Location("location5");
         mission_location[4].setLongitude(Double.parseDouble( "8.193892")); //Holunderstraße/Erikaweg
         mission_location[4].setLatitude(Double.parseDouble("50.734634")); //TODO
@@ -244,8 +249,6 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         mission_location[13].setLongitude(Double.parseDouble( "8.196491")); //TODO
         mission_location[13].setLatitude(Double.parseDouble("50.740746")); //TODO
         photographer[13] = "Nelson";
-
-
     }
 
     public void initWTZ(){
@@ -260,7 +263,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         photographer[0] = "Hans Meiser";
 
 
-        mission_message[1] = "2. Ich muss noch ein paar Dübel beim Bauhaus kaufen !!!";
+        mission_message[1] = "2. Schleifpapier, kleine Schrauben, Fackeln";
         mission_location[1] = new Location("location2");
         mission_location[1].setLongitude(Double.parseDouble("8.503432"));
         mission_location[1].setLatitude(Double.parseDouble("50.566605"));
@@ -325,22 +328,22 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
             tvMission.setText("Foto: "+ photographer[used_mission_counter]);
         }
         else{
-            if((deviation>-10)&&(deviation<10)) {
+            if((deviation>-30)&&(deviation<30)) {
                 tv_message.setText("Geradeaus ! \n");
             }
-            else if((deviation>-90)&&(deviation<-10)) {
+            else if((deviation>-90)&&(deviation<-30)) {
                 tv_message.setText("<-- nach Links! \n");
             }
-            else if((deviation<90)&&(deviation>10)) {
+            else if((deviation<90)&&(deviation>30)) {
                 tv_message.setText("nach  Rechts! --> \n");
             }
             else if((deviation>90)||(deviation<=-90)) {
-                tv_message.setText("falsche Richtung ! \n");
+                tv_message.setText("Ihr entfernt euch vom Ziel\n");
             }
             else{
                 tv_message.setText("Deviation \n"+deviation);
             }
-            String s_track_count = String.format("%.00f",this.track_count);
+            //String s_track_count = String.format("%.00f",this.track_count);
             //tvMission.setText("Strecke " + s_track_count+ " Meter");
         }
     }
