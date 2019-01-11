@@ -216,8 +216,8 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
 
         mission_message[8] = "9. Fotografiert die Zahl 10";
         mission_location[8] = new Location("location9");
-        mission_location[8].setLongitude(Double.parseDouble( "8.193581")); //Brombeerweg/Feldweg
-        mission_location[8].setLatitude(Double.parseDouble("50.737310")); //TODO
+        mission_location[8].setLongitude(Double.parseDouble( "8.187625")); //Parkplatz Trimmpfad
+        mission_location[8].setLatitude(Double.parseDouble("50.738791")); //TODO
         photographer[8] = "Emmy";
 
         mission_message[9] = "10. Fotografiert einen Torjubel";
