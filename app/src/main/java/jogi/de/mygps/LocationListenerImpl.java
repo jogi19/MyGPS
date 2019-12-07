@@ -77,20 +77,33 @@ public class LocationListenerImpl implements LocationListener {
         home_location.setLatitude(Double.parseDouble(s_lat));
 
         Double lat = location.getLatitude();
-        tvLatitude.setText("Latitude: " + lat);
+        String latText = String.format("Latitude: %7.4f",lat);
+        tvLatitude.setText(latText);
         Double lon = location.getLongitude();
-        tvLongitude.setText("Longitude: "+ lon);
+        String longText = String.format("Longitude:  %7.4f",lon);
+        tvLongitude.setText(longText);
         Float bearing_to_home = location.bearingTo(home_location);
         if (bearing_to_home <=0)
         {
             bearing_to_home = 360+bearing_to_home;
         }
         tvAltitude.setText("Altitude: "+ location.getAltitude()+ " m");
-        tvSpeed.setText("Speed: " + location.getSpeed() + " m/s");
+
+        String s_speech = String.format("Speed: %5.2f m/s",location.getSpeed());
+        tvSpeed.setText(s_speech);
+
         tvBearing.setText("Bearing: "+ location.getBearing()+ "'");
-        tvBearingTo.setText("BtH: "+bearing_to_home+ "'");
-        tvDistanceTo.setText("DtH: "+ location.distanceTo(home_location)+ " m");
+        String bthome_text = String.format("BtH: %3.1f '",bearing_to_home);
+        tvBearingTo.setText(bthome_text);
         Float distance_to_home = location.distanceTo(home_location);
+        if(distance_to_home>2000) {
+            Float dis = distance_to_home/1000;
+            String s = String.format("DtH: %8.3f  km",dis);
+            tvDistanceTo.setText(s);
+        }
+        else {
+            tvDistanceTo.setText("DtH: " + distance_to_home + " m");
+        }
         Date locationDate = new Date(location.getTime());
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy\nhh:mm:ss");
         String sDate = sdf.format(locationDate);
@@ -110,7 +123,27 @@ public class LocationListenerImpl implements LocationListener {
         {
             deviation = deviation +360;
         }
-        textview.setText("Deviation \n"+deviation);
+        if(deviation >-5 && deviation <5){
+            textview.setText("Geradeaus ! \n"+deviation);
+        }
+        else if(deviation >=5 && deviation <45){
+            textview.setText("Halbrechts \n"+deviation);
+        }
+        else if(deviation >=45 && deviation <135){
+            textview.setText("Rechts\n"+deviation);
+        }
+        else if(deviation >=135 && deviation <=180){
+            textview.setText("falsche Richtung ! \n"+deviation);
+        }
+        else if(deviation <=-135 && deviation >=-180){
+            textview.setText("falsche Richtung ! \n"+deviation);
+        }
+        else if(deviation <=-45 && deviation >-135){
+            textview.setText("Links\n"+deviation);
+        }
+        else if(deviation <=-5 && deviation >-45){
+            textview.setText("Halblinks\n"+deviation);
+        }
     }
 
     @Override
