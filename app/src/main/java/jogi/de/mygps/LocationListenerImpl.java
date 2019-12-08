@@ -64,6 +64,7 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         String s_long = et_longitude.getText().toString();
         String s_lat = et_latitude.getText().toString();
 
+<<<<<<< origin/nathanel_geburtstag
         //set here already a valid_location to avoid null pointer exceptions
         actual_location = new Location("location_home");
         actual_location.setLongitude(Double.parseDouble(s_long));
@@ -72,6 +73,11 @@ public class LocationListenerImpl implements LocationListener, View.OnClickListe
         destination = new Location("location");
         destination.setLongitude(Double.parseDouble(s_long));
         destination.setLatitude(Double.parseDouble(s_lat));
+=======
+        home_location = new Location("homelocation");
+        home_location.setLongitude(Double.parseDouble(s_long));
+        home_location.setLatitude(Double.parseDouble(s_lat));
+>>>>>>> local
 
         last_update = 1L;
 
