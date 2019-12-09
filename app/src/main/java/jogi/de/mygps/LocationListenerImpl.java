@@ -56,7 +56,7 @@ public class LocationListenerImpl implements LocationListener {
         String s_long = et_longitude.getText().toString();
         String s_lat = et_latitude.getText().toString();
 
-        home_location = new Location("homelocatiom");
+        home_location = new Location("homelocation");
         home_location.setLongitude(Double.parseDouble(s_long));
         home_location.setLatitude(Double.parseDouble(s_lat));
 
