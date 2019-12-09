@@ -7,11 +7,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-<<<<<<< origin/nathanel_geburtstag
-        classpath 'com.android.tools.build:gradle:3.3.0'
-=======
-        classpath 'com.android.tools.build:gradle:3.5.2'
->>>>>>> local
+        classpath 'com.android.tools.build:gradle:3.5.3'
+
         
 
         // NOTE: Do not place your application dependencies here; they belong
