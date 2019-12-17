@@ -87,10 +87,12 @@ public class LocationListenerImpl implements LocationListener {
         {
             bearing_to_home = 360+bearing_to_home;
         }
-        tvAltitude.setText("Altitude: "+ location.getAltitude()+ " m");
+        Double alt = location.getAltitude();
+        String altText = String.format("Altitude: %5.2f",alt);
+        tvAltitude.setText(altText+ " m");
 
-        String s_speech = String.format("Speed: %5.2f m/s",location.getSpeed());
-        tvSpeed.setText(s_speech);
+        String s_speed = String.format("Speed: %5.2f m/s",location.getSpeed());
+        tvSpeed.setText(s_speed);
 
         tvBearing.setText("Bearing: "+ location.getBearing()+ "'");
         String bthome_text = String.format("BtH: %3.1f '",bearing_to_home);
