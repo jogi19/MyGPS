@@ -91,7 +91,7 @@ public class LocationListenerImpl implements LocationListener {
         String altText = String.format("Altitude: %5.2f",alt);
         tvAltitude.setText(altText+ " m");
 
-        String s_speed = String.format("Speed: %5.2f m/s",location.getSpeed());
+        String s_speed = String.format("Speed: %5.2f Km/h",3.6*location.getSpeed());
         tvSpeed.setText(s_speed);
 
         tvBearing.setText("Bearing: "+ location.getBearing()+ "'");
